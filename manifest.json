@@ -1,0 +1,54 @@
+{
+   "id": "boite-a-outil-sudoc",
+   "title": [
+      {
+         "lang": "en",
+         "text": "SUDOC Toolbox BETA"
+      },
+      {
+         "lang": "fr",
+         "text": "Boîte à outil SUDOC BETA"
+      }
+   ],
+   "subtitle": [
+      {
+         "lang": "en",
+         "text": "a range of tools for interacting with the SUDOC from Alma."
+      },
+      {
+         "lang": "fr",
+         "text": "une gamme d'outils pour interagir avec le SUDOC depuis Alma."
+      }
+   ],
+   "author": "Alex Faure - Université de Bordeaux",
+   "description": [
+      {
+         "lang": "en",
+         "text": "For a list of results, the Whereis service shows the number of libraries located in the SUDOC. The SUDOC synchro service ensures that titles are correctly synchronized with the SUDOC."
+      },
+      {
+         "lang": "fr",
+         "text": "Pour une liste de résultats, le service Whereis permet de connaitre le nombre bibliothèques localisées dans le SUDOC. Le service synchro SUDOC permet de s'assurer que les titres sont correctement synchronisés avec le SUDOC."
+      }
+   ],
+   "icon": {
+      "type": "url",
+      "value": "/assets/logo-sudoc.png"
+   },
+   "contentSecurity": {
+      "sandbox": {
+         "popups": true,
+         "modals": true
+      },
+      "connectSrc": [
+         "https://www.sudoc.fr/"
+      ]
+   },
+   "pages": {
+      "help": "/#/help",
+      "config": "/#/config"
+   },
+   "entities": [
+      "BIB_MMS"
+   ]
+}

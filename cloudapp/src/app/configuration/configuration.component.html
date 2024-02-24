@@ -1,0 +1,27 @@
+<div class="loading-shade" *ngIf="saving">
+    <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+  </div>
+  
+  <div class="eca-actions">
+    <button mat-mini-fab color="primary" [routerLink]="['/']" [attr.aria-label]="'Main.Retour'|translate" [matTooltip]="'Main.Retour'|translate">
+      <mat-icon >home</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" [routerLink]="['/help']" [attr.aria-label]="'Help.Titre'|translate" [matTooltip]="'Help.Titre'|translate">
+      <mat-icon >help</mat-icon>
+    </button>
+    <a mat-mini-fab color="primary" [attr.aria-label]="'Main.Bug'|translate" [matTooltip]="'Main.Bug'|translate" href="https://github.com/louxfaure/sudoc-cloudapp/issues" target='_blank'>
+        <mat-icon>bug_report</mat-icon>
+    </a>
+  </div>
+  
+  <h1>{{'Conf.Titre'|translate}}</h1>
+  <p [innerHTML]="'Conf.Descr'|translate"></p>
+  <div *ngIf="configForm">
+    <form [formGroup]="configForm">
+      <mat-form-field appearance="standard">
+        <mat-label>{{'Conf.Label'|translate}}</mat-label>
+        <textarea matInput formControlName="iln"></textarea>
+      </mat-form-field>
+      <div><button mat-flat-button type="button" color="primary" (click)="saveConfig()"  [disabled]="!(configForm?.dirty)">Save</button></div>
+    </form>
+  </div>

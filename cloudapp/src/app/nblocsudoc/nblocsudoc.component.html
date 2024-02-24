@@ -1,0 +1,44 @@
+<div class="loading-shade" *ngIf="loading">
+    <mat-progress-spinner 
+      mode="indeterminate"
+      diameter="50"
+      >
+    </mat-progress-spinner>
+  </div>
+  <div class="eca-actions">
+    <button mat-mini-fab color="primary" [routerLink]="['/']" [attr.aria-label]="'Main.Retour'|translate" [matTooltip]="'Main.Retour'|translate">
+      <mat-icon >home</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" [routerLink]="['/help']" [attr.aria-label]="'Help.Titre'|translate" [matTooltip]="'Help.Titre'|translate">
+      <mat-icon >help</mat-icon>
+    </button>
+    <a mat-mini-fab color="primary" [attr.aria-label]="'Main.Bug'|translate" [matTooltip]="'Main.Bug'|translate" href="https://github.com/louxfaure/sudoc-cloudapp/issues" target='_blank'>
+        <mat-icon>bug_report</mat-icon>
+    </a>
+  </div>
+  
+  <div *ngIf="records.length>0 else nobibs">
+    <mat-list>
+      <ng-container *ngFor="let record of records; index as i">
+        <mat-list-item>
+          <h3 matLine>{{i+1}}. {{record.description || record.id}}</h3>
+          <p matLine *ngIf="record.multiwhere?.locations">
+            <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+              {{record.multiwhere.locations}}
+            </button> RCR localisés dans le SUDOC
+          </p>
+          <p matLine *ngIf="record.multiwhere?.ppn">
+            <a mat-stroked-button color="primary" [href]="record.multiwhere.url" target="_blank" translate>{{ 'Main.LinkToSudoc'| translate }}</a>
+          </p>
+          <p matLine *ngIf="!record.multiwhere">
+            <span class="not-available" translate><mat-icon class="red">highlight_off</mat-icon>Main.NoSudocRecord</span>
+          </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+      </ng-container>
+    </mat-list>
+  </div>
+  <ng-template #nobibs>      
+      <p translate>Main.NoRecords</p>
+  </ng-template>

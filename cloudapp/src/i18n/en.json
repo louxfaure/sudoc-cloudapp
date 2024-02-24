@@ -1,0 +1,34 @@
+{
+  "Main": {
+    "Intro": "Availability of the displayed records in SUDOC for the ILN ",
+    "NoSudocRecord": "No SUDOC record found.",
+    "NoRecords": "To check for SUDOC availability, navigate to bibliographic records.",
+    "LinkToSudoc" : "See the SUDOC record",
+    "Retour" : "Back",
+    "Bug" : "Open an issue"
+
+  },
+  "SynchroSudoc": {
+    "Intro": "Synchronization analysis",
+    "Titre": "Synchronization analysis for ILN ",
+    "Descr": "<b>'Synchro SUDOC'</b> service , indicates, for each title in the list of search results, whether the modification date of the record in Alma is well above the modification date of the record in the SUDOC and displays all locations for the ILN declared in <b>the configuration parameters</b>.",
+    "UpToDate" : "Up to date",
+    "NotUpToDate" : "Not up to date"
+  },
+  "Nblocsudoc":{
+    "TitreBref": "Multiwhere",
+    "Titre" : "Number of locations in SUDOC",
+    "Descr" : "The 'Multiwhere' service indicates the number of SUDOC establishments located under each title in the list of search results. It is based on <a href='https://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#multiwhere'>the SUDOC web service of the same name</a>."
+  },
+  "Conf":{
+    "Titre" : "Choose your ILN", 
+    "Descr" : "To change the ILN value, you need to have 'Repository Administrator', 'Acquisitions Administrator', 'Catalog Administrator' or 'General System Administrator' rights. If you do not have this level of authorization, please contact your Alma administrator.",
+    "Label" : "Enter your ILN"
+  },
+  "Help": {
+    "Titre": "Help",
+    "Text": "For more help with this app, or to report a problem, please open an issue by clicking on the link below.",
+    "Back": "Back",
+    "Open": "Open an issue"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "Main": {
+    "Intro": "Choisissez un service",
+    "NoSudocRecord": "Pas de correspondance dans le SUDOC.",
+    "NoRecords": "Pour utiliser ce service réalisez, d'abord une recherche de titres, titres physiques ou titres électroniques.",
+    "LinkToSudoc" : "Voir la notice dans le SUDOC",
+    "Retour" : "Retour",
+    "Bug" : "Signaler un bug"
+  },
+
+  "SynchroSudoc": {
+    "TitreBref": "Synchro SUDOC",
+    "Titre": "Analyse de synchronisation SUDOC",
+    "Descr" : "Le service <b>'Synchro SUDOC'</b>, indique, pour chaque titre de la liste des résultats de recherche, si la date de modification de la notice dans Alma est bien supérieure à la date de modification de la notice dans le SUDOC et affiche toutes les localisations pour l'ILN déclaré dans <b>les paramètres de configuration</b>.",
+    "UpToDate" : "À jour",
+    "NotUpToDate" : "Pas à jour"
+  },
+
+  "Nblocsudoc":{
+    "TitreBref": "Multiwhere",
+    "Titre" : "Nombre de localisation dans le SUDOC",
+    "Descr" : "Le service <b>'Multiwhere'</b>, indique le nombre d'établissements du SUDOC localisés sous chaque titre de la liste des résultats de recherche.</br>Il s'appuie sur <a href='https://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#multiwhere'>le web service SUDOC</a> du même nom."
+  },
+  "Conf":{
+    "Titre" : "Choix de l'iln", 
+    "Descr" : "Pour changer la valeur de l'ILN, il est nécessaire de disposer des droits suivants <ul><li>Administrateur de répertoire</li><li>Administrateur des acquisitions</li><li>Administrateur du catalogue</li><li>Administrateur général du système'</li></ul>Si vous ne disposez pas de ce niveau d'autorisation, adressez vous à votre <b>administrateur Alma</b>.",
+    "Label" : "Saisissez votre ILN"
+  },
+
+  "Help": {
+    "Titre": "Aide",
+    "Text": "For more help with this app, or to report a problem, please open an issue by clicking on the link below.",
+    "Back": "Retour",
+    "Open": "Signaler un incident"
+  }
+}

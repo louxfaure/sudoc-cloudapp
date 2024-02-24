@@ -1,0 +1,24 @@
+
+<div class="eca-actions">
+  <button mat-mini-fab color="primary" [routerLink]="['/']" [attr.aria-label]="'Main.Retour'|translate" [matTooltip]="'Main.Retour'|translate">
+    <mat-icon >home</mat-icon>
+  </button>
+  <button mat-mini-fab color="primary" [routerLink]="['/help']" [attr.aria-label]="'Help.Titre'|translate" [matTooltip]="'Help.Titre'|translate">
+    <mat-icon >help</mat-icon>
+  </button>
+  <a mat-mini-fab color="primary" [attr.aria-label]="'Main.Bug'|translate" [matTooltip]="'Main.Bug'|translate" href="https://github.com/louxfaure/sudoc-cloudapp/issues" target='_blank'>
+      <mat-icon>bug_report</mat-icon>
+  </a>
+</div>
+
+<h1>{{'Help.Titre'|translate}}</h1>
+<h2>{{'Nblocsudoc.TitreBref'|translate}} : {{'Nblocsudoc.Titre'|translate}}</h2>
+<p [innerHTML]="'Nblocsudoc.Descr' | translate"></p>
+<h2>{{'SynchroSudoc.TitreBref'|translate}} : {{'SynchroSudoc.Titre'|translate}}</h2>
+<p [innerHTML]="'SynchroSudoc.Descr' | translate"></p>
+<h2>{{'Conf.Titre'|translate}}</h2>
+<p [innerHTML]="'Conf.Descr' | translate"></p>
+<button mat-flat-button color="secondary" [routerLink]="['/config']">
+  <i class="uxf-icon uxf-wrench ng-star-inserted"></i>
+  {{'Conf.Titre'|translate}}
+</button>
