@@ -10,6 +10,7 @@
   },
   "SynchroSudoc": {
     "Intro": "Synchronization analysis",
+    "TitreBref": "Synchro SUDOC",
     "Titre": "Synchronization analysis for ILN ",
     "Descr": "<b>'Synchro SUDOC'</b> service , indicates, for each title in the list of search results, whether the modification date of the record in Alma is well above the modification date of the record in the SUDOC and displays all locations for the ILN declared in <b>the configuration parameters</b>.",
     "UpToDate" : "Up to date",

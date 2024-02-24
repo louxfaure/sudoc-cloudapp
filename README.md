@@ -1,5 +1,12 @@
-# Sudoc Availability Alma Cloud App
 
-From a list of title search results, displays for each record the availability of the title in the SUDOC for the libraries of a given RCR.
-Compares the modification date of the record in the SUDOC with the Alma modification date, and indicates whether the record is up to date.
-Uses Sudoc API https://www.sudoc.fr/services/where/[ILN]/[PPN]
+[![fr](https://img.shields.io/badge/lang-fr-blue)](README.fr-FR.md)
+# SUDOC Toolbox BETA
+A range of tools for interacting with the SUDOC from Alma.
+## Multiwhere : Number of locations in SUDOC
+The 'Multiwhere' service indicates the number of SUDOC establishments located under each title in the list of search results. It is based on the SUDOC web service of the same name.
+
+## SynchroSudoc : Synchronization analysis for ILN
+'Synchro SUDOC' service , indicates, for each title in the list of search results, whether the modification date of the record in Alma is well above the modification date of the record in the SUDOC and displays all locations for the ILN declared in the configuration parameters.
+
+## Choose your ILN
+To change the ILN value, go to configuration menu. You need to have 'Repository Administrator', 'Acquisitions Administrator', 'Catalog Administrator' or 'General System Administrator' rights. If you do not have this level of authorization, please contact your Alma administrator.
