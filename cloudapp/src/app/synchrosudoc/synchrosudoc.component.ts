@@ -30,6 +30,10 @@ export class SynchrosudocComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.configService.get().subscribe( (config) => {
       this.iln = config.iln;
+      if (!this.iln) {
+        this.alert.error("Vous devez renseigner au prélable un ILN via l'écran de configuration. Pour y accéder, il est nécessaire de disposer des droits suivants : Administrateur de répertoire, Administrateur des acquisitions, Administrateur du catalogue ou Administrateur général du système. Si vous ne disposez pas de ce niveau d'autorisation, adressez vous à votre administrateur Alma.");
+        return;
+      }
       this.pageLoad$ = this.eventsService.onPageLoad( pageInfo => {
         const entities = (pageInfo.entities||[]).filter(e=>e.type==EntityType.BIB_MMS);
         if (entities.length > 0) {
