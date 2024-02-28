@@ -36,14 +36,27 @@ export class SynchrosudocComponent implements OnInit, OnDestroy {
       }
       this.pageLoad$ = this.eventsService.onPageLoad( pageInfo => {
         const entities = (pageInfo.entities||[]).filter(e=>e.type==EntityType.BIB_MMS);
+        console.log("Entities:", entities); // Ajouter cette ligne pour déboguer
         if (entities.length > 0) {
           this.loading = true;
           this.bibs = entities;
+          console.log("Initial Bibs:", this.bibs);
           this.sudoc.search(entities,this.iln).pipe(
-            finalize(() => this.loading = false)
+            finalize(() => {
+              this.loading = false;
+              console.log("Final Bibs:", this.bibs);
+            })
           )
           .subscribe({ 
-            next: results => Object.keys(results).forEach(key=>this.bibs.find(b=>b.id==key).sudoc=results[key]),
+            next: results => {
+              console.log("Results:", results);
+              Object.keys(results).forEach(key=> {
+                const bib = this.bibs.find(b=>b.id==key);
+                if(bib){
+                  bib.sudoc=results[key]
+                }
+              });
+           },
             // next: results => {console.log(this.bibs); console.log("results"); console.log(results)},
             error: e => this.alert.error(`An error occurred while loading availability:<br>${e.message}`),
           });

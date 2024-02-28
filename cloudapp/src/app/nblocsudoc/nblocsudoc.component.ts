@@ -16,7 +16,7 @@ export class NblocsudocComponent implements OnInit, OnDestroy {
   configuration: Configuration;
   records: any[] = [];
   loading = false;
-  
+
 
   constructor(
     private eventsService: CloudAppEventsService,
@@ -24,22 +24,23 @@ export class NblocsudocComponent implements OnInit, OnDestroy {
     private multiwhere: MultiwhereService,
     private configService: CloudAppConfigService,
     // private config : Configuration
-  ) {  
+  ) {
   }
 
   ngOnInit() {
-    this.pageLoad$ = this.eventsService.onPageLoad( pageInfo => {
-      const entities = (pageInfo.entities||[]).filter(e=>e.type==EntityType.BIB_MMS);
+    this.pageLoad$ = this.eventsService.onPageLoad(pageInfo => {
+      const entities = (pageInfo.entities || []).filter(e => e.type == EntityType.BIB_MMS);
+      console.log("Entities:", pageInfo)
       if (entities.length > 0) {
         this.loading = true;
         this.records = entities;
         this.multiwhere.search(entities).pipe(
           finalize(() => this.loading = false)
         )
-        .subscribe({ 
-          next: test => Object.keys(test).forEach(key=>this.records.find(b=>b.id==key).multiwhere=test[key]),
-          error: e => this.alert.error(`Impossible de contacter le service de l'ABES<br>${e.message}`),
-        });
+          .subscribe({
+            next: test => Object.keys(test).forEach(key => this.records.find(b => b.id == key).multiwhere = test[key]),
+            error: e => this.alert.error(`Impossible de contacter le service de l'ABES<br>${e.message}`),
+          });
         console.log(this.records);
       }
     });

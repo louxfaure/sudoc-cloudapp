@@ -18,24 +18,31 @@ export class SudocSearchService {
     console.log("iln : " + iln);
     return this.restService.call(`/bibs?mms_id=${entities.map(e => e.id).join(',')}&view=brief`).pipe(
       map(results => this.extractPpnFromNetworkNumber(results.bib)),
-      /* Break up Hathitrust query into chunks */
-      // map(results=>this.SudocQueries(results))
-      switchMap(results => this.http.get<any>(`https://www.sudoc.fr/services/where/${iln}/${results.map(result => result.ppn).join(',')}&format=text/json`)
-        .pipe(
+      switchMap(results => {
+        const ppns = results.map(result => result.ppn).join(',');
+        const url = `https://www.sudoc.fr/services/where/${iln}/${ppns}&format=text/json`;
+        console.log("URL construite:", url); // Ajoutez cette ligne pour enregistrer l'URL
+        return this.http.get<any>(url).pipe(
           map(q => {
-            let m = Object.assign({}, ...Object.keys(q['sudoc']['result']).map(k => ({ [q['sudoc']['result'][k]['ppn']]: q['sudoc']['result'][k] })));
+            let m={};
+            if ("library" in q['sudoc']['result']){
+              m[q['sudoc']['result']['ppn']]=q['sudoc']['result'];
+            }
+            else {
+              m = Object.assign({}, ...Object.keys(q['sudoc']['result']).map(k => ({ [q['sudoc']['result'][k]['ppn']]: q['sudoc']['result'][k] })));
+            }
+            console.log("M :", m);
             let n = Object.assign({}, ...Object.keys(results).map(k => ({ [results[k]['ppn']]: results[k] })));
+            console.log("N :", n);
             let v = Object.assign({}, ...Object.keys(m).map(k => ({ [n[k]['mms_id']]: Object.assign({}, m[k], n[k]) })));
-            // let v = Object.assign({},m,n);
-            // console.log(v)
+            
             return this.buildSearchResults(v);
-            // console.log(results[2]);
-          }),
-          // )),
-          /* Combine results and flaten records array */
-          // map(results=>results = omap(combine(results[0]['sudoc']['result']), r=>({record: r.ppn, availability: this.calculateAvailability(r.library)}))
-        )))
+          })
+        );
+      })
+    );
   }
+ 
 
   private buildSearchResults(bibs: {}) {
     let r: {} = {};
@@ -65,7 +72,7 @@ export class SudocSearchService {
         'url': 'http://www.sudoc.fr/' + bibs[mmsid]['ppn']
       };
     }
-    console.log(r);
+    console.log("Sudoc buildSearchResults:", r);
     return r;
   }
 
@@ -84,7 +91,7 @@ export class SudocSearchService {
           }
         }
       }
-      // console.log("PPN : " + ppn)
+      console.log("extractPpnFromNetworkNumber",bib)
       return bib;
     });
   }

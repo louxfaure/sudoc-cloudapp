@@ -22,7 +22,17 @@ export class MultiwhereService {
       switchMap(resultats => this.http.get<any>(`https://www.sudoc.fr/services/multiwhere/${resultats.map(resultat => resultat.ppn).join(',')}&format=text/json`)
         .pipe(
           map(q => {
-            let m = Object.assign({}, ...Object.keys(q['sudoc']['query']).map(k => ({ [q['sudoc']['query'][k]['ppn']]: q['sudoc']['query'][k] })));
+            let m = {};
+            console.log("Réponse API",q['sudoc'])
+            if (Array.isArray(q['sudoc']['query'])){
+              console.log("Is Array",true)
+              m = Object.assign({}, ...Object.keys(q['sudoc']['query']).map(k => ({ [q['sudoc']['query'][k]['ppn']]: q['sudoc']['query'][k] })));
+            }
+            else {
+              console.log("Is Array",false)
+              m[q['sudoc']['query']['ppn']]=q['sudoc']['query'];
+            }
+            console.log("M :", m);
             let n = Object.assign({}, ...Object.keys(resultats).map(k => ({ [resultats[k]['ppn']]: resultats[k] })));
             let v = Object.assign({}, ...Object.keys(m).map(k => ({ [n[k]['mms_id']]: Object.assign({}, m[k], n[k]) })));
             // let v = Object.assign({},m,n);
