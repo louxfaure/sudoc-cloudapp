@@ -69,7 +69,8 @@ export class SudocSearchService {
         'isUpToDate': isUpToDate,
         'locations': loc,
         'ppn': bibs[mmsid]['ppn'],
-        'url': 'http://www.sudoc.fr/' + bibs[mmsid]['ppn']
+        'url': 'http://www.sudoc.fr/' + bibs[mmsid]['ppn'],
+        'update_by_abes' : bibs[mmsid]['byrcr'] == '1999' ? true : false
       };
     }
     console.log("Sudoc buildSearchResults:", r);

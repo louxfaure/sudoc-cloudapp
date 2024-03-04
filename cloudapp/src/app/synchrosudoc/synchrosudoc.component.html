@@ -32,8 +32,11 @@
             <span class="with-icon" *ngIf="bib.sudoc?.isUpToDate">
               <mat-icon class="green">check_circle</mat-icon> {{ 'SynchroSudoc.UpToDate' | translate }}
             </span>
-            <span class="with-icon" *ngIf="bib.sudoc && !bib.sudoc?.isUpToDate">
+            <span class="with-icon" *ngIf="bib.sudoc && !bib.sudoc?.isUpToDate && !bib.sudoc?.update_by_abes">
               <mat-icon class="red">highlight_off</mat-icon> {{ 'SynchroSudoc.NotUpToDate' | translate }}
+            </span>
+            <span class="with-icon" *ngIf="bib.sudoc && !bib.sudoc?.isUpToDate && bib.sudoc.update_by_abes">
+              <mat-icon class="orange">highlight_off</mat-icon> {{ 'SynchroSudoc.NotUpToDateABES' | translate }}
             </span>
             <mat-list *ngIf="bib.sudoc">
                   <mat-list-item *ngFor="let loc of bib.sudoc.locations">
