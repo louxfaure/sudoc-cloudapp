@@ -24,9 +24,9 @@ export class SudocSearchService {
         console.log("URL construite:", url); // Ajoutez cette ligne pour enregistrer l'URL
         return this.http.get<any>(url).pipe(
           map(q => {
-            let m={};
-            if ("library" in q['sudoc']['result']){
-              m[q['sudoc']['result']['ppn']]=q['sudoc']['result'];
+            let m = {};
+            if ("library" in q['sudoc']['result']) {
+              m[q['sudoc']['result']['ppn']] = q['sudoc']['result'];
             }
             else {
               m = Object.assign({}, ...Object.keys(q['sudoc']['result']).map(k => ({ [q['sudoc']['result'][k]['ppn']]: q['sudoc']['result'][k] })));
@@ -35,14 +35,14 @@ export class SudocSearchService {
             let n = Object.assign({}, ...Object.keys(results).map(k => ({ [results[k]['ppn']]: results[k] })));
             console.log("N :", n);
             let v = Object.assign({}, ...Object.keys(m).map(k => ({ [n[k]['mms_id']]: Object.assign({}, m[k], n[k]) })));
-            
+
             return this.buildSearchResults(v);
           })
         );
       })
     );
   }
- 
+
 
   private buildSearchResults(bibs: {}) {
     let r: {} = {};
@@ -70,7 +70,7 @@ export class SudocSearchService {
         'locations': loc,
         'ppn': bibs[mmsid]['ppn'],
         'url': 'http://www.sudoc.fr/' + bibs[mmsid]['ppn'],
-        'update_by_abes' : bibs[mmsid]['byrcr'] == '1999' ? true : false
+        'update_by_abes': bibs[mmsid]['byrcr'] == '1999' ? true : false
       };
     }
     console.log("Sudoc buildSearchResults:", r);
@@ -84,7 +84,7 @@ export class SudocSearchService {
         // Nécessaire pour mettre le ppn valide en première position
         bib.network_number.reverse();
         for (let i = 0; i < bib.network_number.length; i++) {
-          let m = bib.network_number[i].match(/^\(PPN\)(.{9})/);
+          let m = bib.network_number[i].match(/^\(PPN\)([0-9xX]{9})/);
           if (m) {
             ppn = m[1];
             bib.ppn = ppn;
@@ -92,10 +92,9 @@ export class SudocSearchService {
           }
         }
       }
-      console.log("extractPpnFromNetworkNumber",bib)
+      console.log("extractPpnFromNetworkNumber", bib)
       return bib;
     });
   }
 
 }
-

@@ -74,7 +74,7 @@ export class MultiwhereService {
         // Nécessaire pour mettre le ppn valide en première position
         bib.network_number.reverse();
         for (let i = 0; i < bib.network_number.length; i++) {
-          let m = bib.network_number[i].match(/^\(PPN\)(.{9})/);
+          let m = bib.network_number[i].match(/^\(PPN\)([0-9xX]{9})/);
           if (m) {
             ppn = m[1];
             bib.ppn = ppn;

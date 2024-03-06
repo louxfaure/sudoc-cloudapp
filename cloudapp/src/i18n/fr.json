@@ -1,7 +1,7 @@
 {
   "Main": {
     "Intro": "Choisissez un service",
-    "NoSudocRecord": "Pas de correspondance dans le SUDOC.",
+    "NoSudocRecord": "Pas de PPN ou correspondance dans le SUDOC.",
     "NoRecords": "Pour utiliser ce service réalisez, d'abord une recherche de titres, titres physiques ou titres électroniques.",
     "LinkToSudoc" : "Voir la notice dans le SUDOC",
     "Retour" : "Retour",

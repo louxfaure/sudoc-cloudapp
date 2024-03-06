@@ -36,7 +36,7 @@ export class SynchrosudocComponent implements OnInit, OnDestroy {
       }
       this.pageLoad$ = this.eventsService.onPageLoad( pageInfo => {
         const entities = (pageInfo.entities||[]).filter(e=>e.type==EntityType.BIB_MMS);
-        console.log("Entities:", entities); // Ajouter cette ligne pour déboguer
+        console.log("Entities:", entities);
         if (entities.length > 0) {
           this.loading = true;
           this.bibs = entities;
@@ -57,10 +57,8 @@ export class SynchrosudocComponent implements OnInit, OnDestroy {
                 }
               });
            },
-            // next: results => {console.log(this.bibs); console.log("results"); console.log(results)},
             error: e => this.alert.error(`An error occurred while loading availability:<br>${e.message}`),
           });
-          console.log(this.bibs)
         }
       });
     });  
