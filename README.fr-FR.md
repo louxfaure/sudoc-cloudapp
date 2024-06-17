@@ -1,6 +1,10 @@
 [![fr](https://img.shields.io/badge/lang-en-red)](README.md)
 # Boîte à outils SUDOC [BETA]
 Une gamme d'outils pour interagir avec le SUDOC depuis Alma.
+
+## Liste des PPNs : Extrait les PPNs d'une liste de résultats.
+Le service <i>Liste des PPNs</i> extrait les PPNs des résulats d'une recherche pour les réutiliser dans une recherche sur WinibW, une analyse sur Qualimarc ou dans un fichier.
+
 ## Multiwhere : Nombre de localisation dans le SUDOC
 Le service 'Multiwhere', indique le nombre d'établissements du SUDOC localisés sous chaque titre de la liste des résultats de recherche.
 Il s'appuie sur le web service SUDOC du même nom.
