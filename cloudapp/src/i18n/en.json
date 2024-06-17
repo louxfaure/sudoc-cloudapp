@@ -22,6 +22,11 @@
     "Titre" : "Number of locations in SUDOC",
     "Descr" : "The 'Multiwhere' service indicates the number of SUDOC establishments located under each title in the list of search results. It is based on <a href='https://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#multiwhere'>the SUDOC web service of the same name</a>."
   },
+  "PpnList":{
+    "TitreBref": "List of PPNs",
+    "Titre" : "Extracts PPNs from a list of results.",
+    "Descr" : "The <i>List of PPNs</i> service extracts PPNs from search results for reuse in a WinibW search, a Qualimarc analysis or in a file."
+  }, 
   "Conf":{
     "Titre" : "Choose your ILN", 
     "Descr" : "To change the ILN value, you need to have 'Repository Administrator', 'Acquisitions Administrator', 'Catalog Administrator' or 'General System Administrator' rights. If you do not have this level of authorization, please contact your Alma administrator.",

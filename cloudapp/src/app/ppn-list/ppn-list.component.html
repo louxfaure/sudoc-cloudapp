@@ -1,0 +1,46 @@
+<div class="loading-shade" *ngIf="loading">
+  <mat-progress-spinner 
+    mode="indeterminate"
+    diameter="50"
+    >
+  </mat-progress-spinner>
+</div>
+<div class="eca-actions">
+  <button mat-mini-fab color="primary" [routerLink]="['/']" [attr.aria-label]="'Main.Retour'|translate" [matTooltip]="'Main.Retour'|translate">
+    <mat-icon >home</mat-icon>
+  </button>
+  <button mat-mini-fab color="primary" [routerLink]="['/help']" [attr.aria-label]="'Help.Titre'|translate" [matTooltip]="'Help.Titre'|translate">
+    <mat-icon >help</mat-icon>
+  </button>
+  <a mat-mini-fab color="primary" [attr.aria-label]="'Main.Bug'|translate" [matTooltip]="'Main.Bug'|translate" href="https://github.com/louxfaure/sudoc-cloudapp/issues" target='_blank'>
+      <mat-icon>bug_report</mat-icon>
+  </a>
+</div>
+
+
+<h1>{{nb_ppns}} ppn extraits de la liste des résultats</h1>
+
+<div *ngIf="ppns_qualimarc else nobibs">
+  <h2> Copier les ppns pour les utiliser :</h2>
+  <mat-list role="list">
+    <mat-list-item role="listitem">
+      <a mat-stroked-button color="primary" [cdkCopyToClipboard]="requete_ppns_sudoc" (cdkCopyToClipboardCopied)="onClipboardCopy($event)" matTooltip="Copier les PPNs pour une recherche dans WinibW">
+        <mat-icon>content_copy</mat-icon>Dans une recherche sur WinibW
+      </a>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+      <a mat-stroked-button color="primary" [cdkCopyToClipboard]="ppns_qualimarc" (cdkCopyToClipboardCopied)="onClipboardCopy($event)"matTooltip="Copier les PPNs pour une analyse dans Qualimarc">
+        <mat-icon>content_copy</mat-icon>Dans une analyse sur Qualimarc
+      </a>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+      <a mat-stroked-button color="primary" [cdkCopyToClipboard]="ppns_pour_fichier" (cdkCopyToClipboardCopied)="onClipboardCopy($event)"matTooltip="Copier les PPNs pour les coller dans un fichier">
+        <mat-icon>content_copy</mat-icon>Dans un fichier
+      </a>
+    </mat-list-item>
+  </mat-list>
+</div>
+<ng-template #nobibs>      
+    <p translate>Main.NoRecords</p>
+</ng-template>
+  

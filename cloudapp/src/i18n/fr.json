@@ -1,7 +1,7 @@
 {
   "Main": {
     "Intro": "Choisissez un service",
-    "NoSudocRecord": "Pas de PPN ou correspondance dans le SUDOC.",
+    "NoSudocRecord": "Pas de PPN ou de correspondance dans le SUDOC.",
     "NoRecords": "Pour utiliser ce service réalisez, d'abord une recherche de titres, titres physiques ou titres électroniques.",
     "LinkToSudoc" : "Voir la notice dans le SUDOC",
     "Retour" : "Retour",
@@ -22,6 +22,11 @@
     "Titre" : "Nombre de localisation dans le SUDOC",
     "Descr" : "Le service <b>'Multiwhere'</b>, indique le nombre d'établissements du SUDOC localisés sous chaque titre de la liste des résultats de recherche.</br>Il s'appuie sur <a href='https://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#multiwhere'>le web service SUDOC</a> du même nom."
   },
+  "PpnList":{
+    "TitreBref": "Liste des PPNs",
+    "Titre" : "Extrait les PPNs d'une liste de résultats.",
+    "Descr" : "Le service <i>Liste des PPNs</i> extrait les PPNs des résulats d'une recherche pour les réutiliser dans une recherche sur WinibW, une analyse sur Qualimarc ou dans un fichier."
+  }, 
   "Conf":{
     "Titre" : "Choix de l'iln", 
     "Descr" : "Pour changer la valeur de l'ILN, il est nécessaire de disposer des droits suivants <ul><li>Administrateur de répertoire</li><li>Administrateur des acquisitions</li><li>Administrateur du catalogue</li><li>Administrateur général du système'</li></ul>Si vous ne disposez pas de ce niveau d'autorisation, adressez vous à votre <b>administrateur Alma</b>.",
